@@ -1,0 +1,208 @@
+:root {
+    --light-red: #FBA9A9;
+    --light-orange: #FACCB0;
+    --light-green: #D8EDB4;
+    --light-blue: #A7E8DA;
+    --light-purple: #C4B8F0;
+    --light-mono: #EDEDED;
+
+    --dark-red: #330201;
+    --dark-orange: #311503;
+    --dark-green: #282E23;
+    --dark-blue: #0B2923;
+    --dark-purple: #18123B;
+    --dark-mono: #111111;
+
+    --gray: #333333;
+
+    --black-svg-filter: brightness(0) saturate(100%) invert(0%) sepia(6%) saturate(249%) hue-rotate(352deg) brightness(101%) contrast(80%);
+    --white-svg-filter: brightness(0) saturate(100%) invert(100%) sepia(28%) saturate(2206%) hue-rotate(285deg) brightness(137%) contrast(86%);
+
+    --font-serif: Playfair Display, Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+    --font-sans: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    --font-mono: JetBrains Mono, Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+}
+
+
+html, body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: var(--dark-mono);
+    background-color: var(--light-mono);
+    font-family: var(--font-sans);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+main {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+}
+
+h1,h2,h3 {
+    font-family: var(--font-serif);
+    font-weight: 200;
+}
+
+h1 {
+    font-size: 2.4em;
+}
+
+section {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+hr {
+    border: 1px solid var(--dark-mono);
+}
+
+a {
+    color: var(--dark-mono);
+    text-decoration: none;
+    border-bottom: 1px solid var(--dark-mono);
+}
+
+a:hover {
+    background-color: var(--dark-mono);
+    color: var(--light-mono);
+}
+
+/* The Inline Divider. Patent Pending
+ *
+ * (joke, my ego isnt as fragile as an arch rice. i can handle people talking my things)
+ *
+ */
+
+.inline-divider {
+    display: flex;
+    column-gap: 8px;
+    position: relative;
+}
+
+.inline-divider * {
+    flex-shrink: 0;
+}
+
+.inline-divider::after {
+    content: '';
+    text-align: left;
+    display: inline-block;
+    width: 100%;
+    height: 1rem;
+    background-image: url(inline.svg);
+    filter: var(--black-svg-filter);
+    align-self: center;
+    margin-left: 16px;
+    margin-top: 4px;
+    flex-shrink: 1;
+}
+
+.inline-divider::before {
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 1rem;
+    background-image: url(inline.svg);
+    filter: var(--black-svg-filter);
+    align-self: center;
+    margin-right: 16px;
+    margin-top: 4px;
+    flex-shrink: 1;
+}
+
+/* Disclaimers */
+
+.disclaimer {
+    font-family: var(--font-sans);
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding: 1em;
+}
+
+.disclaimer h4 {
+    margin: 0;
+}
+
+.d-warning {
+    color: var(--dark-red);
+    background: linear-gradient(90deg, var(--light-red) 75%, transparent 100%);
+    border-left: 4px solid var(--dark-red);
+}
+
+.d-notice {
+    color: var(--dark-orange);
+    background: linear-gradient(90deg, var(--light-orange) 75%, transparent 100%);
+    border-left: 4px solid var(--dark-orange);
+}
+
+/* Post-specific */
+
+.post-location-nav {
+    display: flex;
+    justify-content: space-around;
+    min-height: 4em;
+    margin: 1em;
+}
+
+.post-location-nav .next-post, .post-location-nav .prev-post {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-location-nav .next-post {
+    align-self: flex-start;
+}
+
+.post-location-nav .prev-post {
+    align-self: flex-end;
+}
+
+.post-location-nav .prev-post::before, .post-location-nav .next-post::before {
+    position: absolute;
+    word-break: keep-all;
+    font-size: 3em;
+    opacity: 0.3;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        color: var(--light-mono);
+        background-color: var(--dark-mono);
+    }
+    a {
+        color: var(--light-mono);
+        border-color: var(--light-mono);
+    }
+    a:hover {
+        background-color: var(--light-mono);
+        color: var(--dark-mono);
+    }    
+    hr {
+        border-color: var(--light-mono);
+    }
+    .inline-divider::after, .inline-divider::before {
+        filter: var(--white-svg-filter);
+    }
+    .d-warning {
+        color: var(--light-red);
+        background: linear-gradient(90deg, var(--dark-red) 80%, transparent 100%);
+        border-color: var(--light-red);
+    }
+    .d-notice {
+        color: var(--light-orange);
+        background: linear-gradient(90deg, var(--dark-orange) 80%, transparent 100%);
+        border-color: var(--light-orange);
+    }
+}
