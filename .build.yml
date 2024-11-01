@@ -5,6 +5,8 @@ packages:
 environment:
   site: design.aei.sh
   repo: design
+secrets:
+- 9934f578-d05c-45df-9dc7-e5e9204eccad
 tasks:
 - package: |
     cd $repo
