@@ -236,7 +236,7 @@ code {
 
 @media (prefers-reduced-motion: reduce) {
     body {
-        background-image: url("bgmask.jpg");
+        background-image: url("bg-mask.jpg");
     }
 }
 
