@@ -40,9 +40,9 @@
     </head>
     <body>
         <header>
-            <span class="title inline-divider"><h1>Design Draft</h1></span>
-            <div class="post-metadata">
-                <time>Nov 1, 2024</time>
+            <h1>Design Draft</h1>
+            <div class="post-metadata inline-divider">
+                <time>Nov 2, 2024</time>
             </div>
         </header>
         <main>
@@ -81,7 +81,50 @@
             </section>
             <section>
                 <h2>Horizontal Rules</h2>
-                <hr>
+                <hr><hr><hr>
+            </section>
+            <section>
+                <h2>Codeblock</h2>
+                <code>
+                    <pre>
+.inline-divider {
+    display: flex;
+    column-gap: 8px;
+    position: relative;
+}
+
+.inline-divider * {
+    flex-shrink: 0;
+}
+
+.inline-divider::after {
+    content: '';
+    text-align: left;
+    display: inline-block;
+    width: 100%;
+    height: 1rem;
+    background-image: url(inline.svg);
+    filter: var(--svg-filter);
+    align-self: center;
+    margin-left: 16px;
+    margin-top: 4px;
+    flex-shrink: 1;
+}
+
+.inline-divider::before {
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 1rem;
+    background-image: url(inline.svg);
+    filter: var(--svg-filter);
+    align-self: center;
+    margin-right: 16px;
+    margin-top: 4px;
+    flex-shrink: 1;
+}
+                    </pre>
+                </code>
             </section>
         </main>
         <footer>

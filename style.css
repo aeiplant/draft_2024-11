@@ -1,28 +1,47 @@
 :root {
-    --light-red: #FBA9A9;
-    --light-orange: #FACCB0;
-    --light-green: #D8EDB4;
-    --light-blue: #A7E8DA;
-    --light-purple: #C4B8F0;
-    --light-mono: #EDEDED;
+    --bg-red: #FBA9A9;
+    --bg-orange: #FACCB0;
+    --bg-green: #D8EDB4;
+    --bg-blue: #A7E8DA;
+    --bg-purple: #C4B8F0;
+    --bg-mono: #EDEDED;
 
-    --dark-red: #330201;
-    --dark-orange: #311503;
-    --dark-green: #282E23;
-    --dark-blue: #0B2923;
-    --dark-purple: #18123B;
-    --dark-mono: #111111;
+    --fg-red: #330201;
+    --fg-orange: #311503;
+    --fg-green: #282E23;
+    --fg-blue: #0B2923;
+    --fg-purple: #18123B;
+    --fg-mono: #111111;
 
-    --gray: #333333;
+    --svg-filter: brightness(0) saturate(100%) invert(0%) sepia(6%) saturate(249%) hue-rotate(352deg) brightness(101%) contrast(80%);
 
-    --black-svg-filter: brightness(0) saturate(100%) invert(0%) sepia(6%) saturate(249%) hue-rotate(352deg) brightness(101%) contrast(80%);
-    --white-svg-filter: brightness(0) saturate(100%) invert(100%) sepia(28%) saturate(2206%) hue-rotate(285deg) brightness(137%) contrast(86%);
+    --warning-gradient: linear-gradient(60deg, var(--bg-red) 30%, transparent 95%, transparent 100%);
+    --notice-gradient: linear-gradient(60deg, var(--bg-orange) 30%, transparent 95%, transparent 100%);
 
     --font-serif: Playfair Display, Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
     --font-sans: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
     --font-mono: JetBrains Mono, Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 }
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --fg-red: #FBA9A9;
+        --fg-orange: #FACCB0;
+        --fg-green: #D8EDB4;
+        --fg-blue: #A7E8DA;
+        --fg-purple: #C4B8F0;
+        --fg-mono: #EDEDED;
+    
+        --bg-red: #330201;
+        --bg-orange: #311503;
+        --bg-green: #282E23;
+        --bg-blue: #0B2923;
+        --bg-purple: #18123B;
+        --bg-mono: #111111;
+
+        --svg-filter: brightness(0) saturate(100%) invert(100%) sepia(28%) saturate(2206%) hue-rotate(285deg) brightness(137%) contrast(86%);
+    }
+}
 
 html, body {
     box-sizing: border-box;
@@ -31,9 +50,12 @@ html, body {
 }
 
 body {
-    color: var(--dark-mono);
-    background-color: var(--light-mono);
+    color: var(--fg-mono);
     font-family: var(--font-sans);
+    background-image: url("bgmask.gif");
+    background-size: 5%;
+    background-color: var(--bg-mono);
+    background-blend-mode: hard-light;
 }
 
 header {
@@ -64,18 +86,18 @@ section {
 }
 
 hr {
-    border: 1px solid var(--dark-mono);
+    border: 1px solid var(--fg-mono);
 }
 
 a {
-    color: var(--dark-mono);
+    color: var(--fg-mono);
     text-decoration: none;
-    border-bottom: 1px solid var(--dark-mono);
+    border-bottom: 1px solid var(--fg-mono);
 }
 
 a:hover {
-    background-color: var(--dark-mono);
-    color: var(--light-mono);
+    background-color: var(--fg-mono);
+    color: var(--bg-mono);
 }
 
 /* The Inline Divider. Patent Pending
@@ -101,7 +123,7 @@ a:hover {
     width: 100%;
     height: 1rem;
     background-image: url(inline.svg);
-    filter: var(--black-svg-filter);
+    filter: var(--svg-filter);
     align-self: center;
     margin-left: 16px;
     margin-top: 4px;
@@ -114,7 +136,7 @@ a:hover {
     width: 100%;
     height: 1rem;
     background-image: url(inline.svg);
-    filter: var(--black-svg-filter);
+    filter: var(--svg-filter);
     align-self: center;
     margin-right: 16px;
     margin-top: 4px;
@@ -135,15 +157,17 @@ a:hover {
 }
 
 .d-warning {
-    color: var(--dark-red);
-    background: linear-gradient(90deg, var(--light-red) 75%, transparent 100%);
-    border-left: 4px solid var(--dark-red);
+    color: var(--fg-red);
+    transition: 200ms ease infinite;
+    animation: bg-move 4s infinite;
+    background: var(--warning-gradient);
+    border-left: 4px solid var(--fg-red);
 }
 
 .d-notice {
-    color: var(--dark-orange);
-    background: linear-gradient(90deg, var(--light-orange) 75%, transparent 100%);
-    border-left: 4px solid var(--dark-orange);
+    color: var(--fg-orange);
+    background: var(--notice-gradient);
+    border-left: 4px solid var(--fg-orange);
 }
 
 /* Post-specific */
@@ -176,33 +200,19 @@ a:hover {
     opacity: 0.3;
 }
 
+code {
+    color: var(--fg-mono);
+}
+
+/* Media Queries */
+
 @media (prefers-color-scheme: dark) {
     body {
-        color: var(--light-mono);
-        background-color: var(--dark-mono);
+        background-image: url("bgmask-dark.gif");
     }
-    a {
-        color: var(--light-mono);
-        border-color: var(--light-mono);
-    }
-    a:hover {
-        background-color: var(--light-mono);
-        color: var(--dark-mono);
-    }    
-    hr {
-        border-color: var(--light-mono);
-    }
-    .inline-divider::after, .inline-divider::before {
-        filter: var(--white-svg-filter);
-    }
-    .d-warning {
-        color: var(--light-red);
-        background: linear-gradient(90deg, var(--dark-red) 80%, transparent 100%);
-        border-color: var(--light-red);
-    }
-    .d-notice {
-        color: var(--light-orange);
-        background: linear-gradient(90deg, var(--dark-orange) 80%, transparent 100%);
-        border-color: var(--light-orange);
+}
+@media (prefers-reduced-motion) {
+    body {
+        background-image: none;
     }
 }
