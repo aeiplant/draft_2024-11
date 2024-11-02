@@ -1,47 +1,73 @@
-:root {
-    --bg-red: #FBA9A9;
-    --bg-orange: #FACCB0;
-    --bg-green: #D8EDB4;
-    --bg-blue: #A7E8DA;
-    --bg-purple: #C4B8F0;
-    --bg-mono: #EDEDED;
+/* Variables */
 
-    --fg-red: #330201;
-    --fg-orange: #311503;
-    --fg-green: #282E23;
-    --fg-blue: #0B2923;
-    --fg-purple: #18123B;
-    --fg-mono: #111111;
+:root {
+
+    /* Colors */
+    --light-red: #FBA9A9;
+    --light-orange: #FACCB0;
+    --light-green: #D8EDB4;
+    --light-blue: #A7E8DA;
+    --light-purple: #C4B8F0;
+    --light-mono: #EDEDED;
+
+    --dark-red: #330201;
+    --dark-orange: #311503;
+    --dark-green: #282E23;
+    --dark-blue: #0B2923;
+    --dark-purple: #18123B;
+    --dark-mono: #161616;
+
+    /* Light mode variables */
+    --bg-red: var(--light-red);
+    --bg-orange: var(--light-orange);
+    --bg-green: var(--light-green);
+    --bg-blue: var(--light-blue);
+    --bg-purple: var(--light-purple);
+    --bg-mono: var(--light-mono);
+
+    --fg-red: var(--dark-red);
+    --fg-orange: var(--dark-orange);
+    --fg-green: var(--dark-green);
+    --fg-blue: var(--dark-blue);
+    --fg-purple: var(--dark-purple);
+    --fg-mono: var(--dark-mono);
 
     --svg-filter: brightness(0) saturate(100%) invert(0%) sepia(6%) saturate(249%) hue-rotate(352deg) brightness(101%) contrast(80%);
 
-    --warning-gradient: linear-gradient(60deg, var(--bg-red) 30%, transparent 95%, transparent 100%);
-    --notice-gradient: linear-gradient(60deg, var(--bg-orange) 30%, transparent 95%, transparent 100%);
+    
+    --warning-gradient: linear-gradient(90deg, var(--bg-red) 55%, transparent 98%, transparent 100%);
+    --notice-gradient: linear-gradient(90deg, var(--bg-orange) 55%, transparent 98%, transparent 100%);
+
+    /* Fonts */
 
     --font-serif: Playfair Display, Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
     --font-sans: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
     --font-mono: JetBrains Mono, Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 }
 
+/* Dark Mode Variables */
+
 @media (prefers-color-scheme: dark) {
     :root {
-        --fg-red: #FBA9A9;
-        --fg-orange: #FACCB0;
-        --fg-green: #D8EDB4;
-        --fg-blue: #A7E8DA;
-        --fg-purple: #C4B8F0;
-        --fg-mono: #EDEDED;
-    
-        --bg-red: #330201;
-        --bg-orange: #311503;
-        --bg-green: #282E23;
-        --bg-blue: #0B2923;
-        --bg-purple: #18123B;
-        --bg-mono: #111111;
+        --bg-red: var(--dark-red);
+        --bg-orange: var(--dark-orange);
+        --bg-green: var(--dark-green);
+        --bg-blue: var(--dark-blue);
+        --bg-purple: var(--dark-purple);
+        --bg-mono: var(--dark-mono);
+
+        --fg-red: var(--light-red);
+        --fg-orange: var(--light-orange);
+        --fg-green: var(--light-green);
+        --fg-blue: var(--light-blue);
+        --fg-purple: var(--light-purple);
+        --fg-mono: var(--light-mono);
 
         --svg-filter: brightness(0) saturate(100%) invert(100%) sepia(28%) saturate(2206%) hue-rotate(285deg) brightness(137%) contrast(86%);
     }
 }
+
+/* Main Page */
 
 html, body {
     box-sizing: border-box;
@@ -52,11 +78,13 @@ html, body {
 body {
     color: var(--fg-mono);
     font-family: var(--font-sans);
-    background-image: url("bgmask.gif");
+    background-image: url("bg-mask.gif");
     background-size: 5%;
     background-color: var(--bg-mono);
-    background-blend-mode: hard-light;
+    background-blend-mode: overlay;
 }
+
+/* Native Elements */
 
 header {
     text-align: center;
@@ -98,6 +126,10 @@ a {
 a:hover {
     background-color: var(--fg-mono);
     color: var(--bg-mono);
+}
+
+code {
+    color: var(--fg-mono);
 }
 
 /* The Inline Divider. Patent Pending
@@ -143,7 +175,7 @@ a:hover {
     flex-shrink: 1;
 }
 
-/* Disclaimers */
+/* Disclaimers (will change to "Notice Boxes" to have more colors) */
 
 .disclaimer {
     font-family: var(--font-sans);
@@ -170,7 +202,7 @@ a:hover {
     border-left: 4px solid var(--fg-orange);
 }
 
-/* Post-specific */
+/* Post Elements */
 
 .post-location-nav {
     display: flex;
@@ -200,19 +232,22 @@ a:hover {
     opacity: 0.3;
 }
 
-code {
-    color: var(--fg-mono);
-}
+/* Reduced Motion Query */
 
-/* Media Queries */
-
-@media (prefers-color-scheme: dark) {
+@media (prefers-reduced-motion: reduce) {
     body {
-        background-image: url("bgmask-dark.gif");
+        background-image: url("bgmask.jpg");
     }
 }
-@media (prefers-reduced-motion) {
-    body {
-        background-image: none;
-    }
+
+/* High Contrast Query */
+
+@media (prefers-contrast: more) {
+
 }
+
+/* Printers Query (potentially gimmicky) */
+
+@media print {
+    
+}  
