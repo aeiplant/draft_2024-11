@@ -1,0 +1,15 @@
+archived old attempt at a website design, around a year old from 
+now. leaving it as it, as an educational experience.
+
+what it did well:
+	- choice of typography is nice, but i might be biased.
+	- disclaimers are stylized while retaining an accessible look
+	- semantic HTML5 elements used
+	
+	
+what it didn't do well:
+	- background is too exggadurated. i know what i was going for
+	  back then and i can now tell it was not a great idea.
+	  (admittedly, @prefers-reduced-motion deals with it. but
+	  still not a great design in general.)
+	- design in general was too bland and tried too hard.
