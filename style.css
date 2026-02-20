@@ -34,7 +34,6 @@
 
     --svg-filter: brightness(0) saturate(100%) invert(0%) sepia(6%) saturate(249%) hue-rotate(352deg) brightness(101%) contrast(80%);
 
-    
     --warning-gradient: linear-gradient(90deg, var(--bg-red) 55%, transparent 98%, transparent 100%);
     --notice-gradient: linear-gradient(90deg, var(--bg-orange) 55%, transparent 98%, transparent 100%);
 
