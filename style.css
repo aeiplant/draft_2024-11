@@ -79,7 +79,7 @@ body {
     color: var(--fg-mono);
     font-family: var(--font-sans);
     background-image: url("bg-mask.gif");
-    background-size: 5%;
+    background-size: 12%;
     background-color: var(--bg-mono);
     background-blend-mode: overlay;
 }
